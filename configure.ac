@@ -118,7 +118,7 @@ case $host in
   *-apple*)
   AC_SUBST( sharedlib, ["libstk.dylib"] )
   AC_SUBST( sharedname, ["libstk.\$(RELEASE).dylib"] )
-  AC_SUBST( libflags, ["-dynamiclib -o libstk.\$(RELEASE).dylib"] )
+  AC_SUBST( libflags, ["-install_name \$(DSTDIR)\$(PREFIX)\$(LIBDIR)/libstk.dylib.\$(RELEASE) -dynamiclib -o libstk.dylib.\$(RELEASE)"] )   
 esac
 
 if test $realtime = yes; then
