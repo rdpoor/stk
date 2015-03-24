@@ -111,9 +111,11 @@ CXXFLAGS="$CXXFLAGS $cxxflag"
 
 AC_CANONICAL_HOST
 
+basesharedname="libstk-\$(RELEASE)"
+
 AC_SUBST( sharedlib, ["libstk.so"] )
-AC_SUBST( sharedname, ["libstk.so.\$(RELEASE)"] )
-AC_SUBST( libflags, ["-shared -Wl,-soname,\$(SHAREDLIB).\$(MAJOR) -o \$(SHAREDLIB).\$(RELEASE)"] )
+AC_SUBST( sharedname, [${basesharedname}.so] )
+AC_SUBST( libflags, ["-shared -Wl,-soname,${basesharedname}.so -o $sharedname"] )
 case $host in
   *-apple*)
   AC_SUBST( sharedlib, ["libstk.dylib"] )
